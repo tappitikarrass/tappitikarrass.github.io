@@ -10,19 +10,34 @@ export default function Menu() {
       <p></p>
       <Container maxWidth="xl">
         <Grid container spacing={2}>
-          <Grid item xs={true}>
-            <ButtonGroup variant="contained" disableElevation>
-              <Button startIcon={<GitHubIcon />}>GitHub</Button>
-              <Button startIcon={<MailIcon />}>Contact me</Button>
-            </ButtonGroup>
+          <Grid item xs={false}>
+            <Button
+              href="https://github.com/tappitikarrass"
+              variant="contained"
+              startIcon={<GitHubIcon />}
+              disableElevation
+            >
+              GitHub
+            </Button>
           </Grid>
-          <Grid item>
+          <Grid item xs={true}>
+            <Button
+              href="mailto:lytvyn.andrii.contact@gmail.com"
+              variant="contained"
+              startIcon={<MailIcon />}
+              disableElevation
+            >
+              Mail me
+            </Button>
+          </Grid>
+          <Grid item xs={false}>
             <ModeSwitch />
           </Grid>
         </Grid>
       </Container>
       <p></p>
       <Divider />
+      <p></p>
     </div>
   );
 }
