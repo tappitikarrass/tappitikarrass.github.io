@@ -22,7 +22,8 @@ My personal website built with React, TypeScript and MUI v5.
   - [ ] About me
   - [ ] ???
 - [ ] Implement routing with `react-router`
-- [ ] ???
+- [ ] Deploy to Heroku
+  - [ ] Add `heroku.yml`
 
 <!-- ## create-react-app readme -->
 <!---->
