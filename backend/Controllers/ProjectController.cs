@@ -7,14 +7,9 @@ namespace PersonalWebsiteBackend.Controllers;
 [Route("[controller]")]
 public class ProjectController : ControllerBase
 {
-    [HttpGet("{id}")]
-    public ActionResult<Project> Get(int id)
+    [HttpGet]
+    public ActionResult<Project> Get()
     {
-        var list = new ProjectsList();
-        if (id < 0 || id > list.List.Count - 1)
-        {
-            return NotFound();
-        }
-        return list.List[id];
+        return new Project("Project 1", "https://example.com");
     }
 }
