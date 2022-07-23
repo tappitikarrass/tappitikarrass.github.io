@@ -1,6 +1,7 @@
 version: '3'
 services:
   web:
+    container_name: web
     build:
       context: ./
       dockerfile: ./docker/WebDev/Dockerfile
@@ -8,16 +9,19 @@ services:
      - ASPNETCORE_ENVIRONMENT=Development
      - DOTNET_WATCH_RESTART_ON_RUDE_EDIT=1
      - DOTNET_WATCH_SUPPRESS_EMOJIS=1
+     - DOTNET_USE_POLLING_FILE_WATCHER=1
     volumes:
       - ./backend:/source/app
     depends_on:
       - postgres
   postgres:
+    container_name: postgres
     image: postgres:14.4-alpine
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
   pgadmin4:
+    container_name: pgadmin4
     image: dpage/pgadmin4:latest
     environment:
       - PGADMIN_DEFAULT_EMAIL=example@liamg.com
@@ -25,6 +29,7 @@ services:
     depends_on:
       - postgres
   nginx:
+    container_name: nginx
     build:
       context: ./
       dockerfile: ./docker/NginxDev/Dockerfile
