@@ -1,0 +1,22 @@
+{
+  "project": [
+    {
+      "id": 1,
+      "name": "Project 1",
+      "url": "https://example.com"
+    },
+    {
+      "id": 2,
+      "name": "Project 2",
+      "url": "https://example.com"
+    },
+    {
+      "id": 3,
+      "name": "Project 3",
+      "url": "https://example.com"
+    }
+  ],
+  "projects": {
+    "count": 3
+  }
+}

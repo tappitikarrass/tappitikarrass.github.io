@@ -11,6 +11,7 @@ services:
      - DOTNET_WATCH_SUPPRESS_EMOJIS=1
      - DOTNET_USE_POLLING_FILE_WATCHER=1
     ports:
-      - 80:80
+      - 7027:7027
+      - 5015:5015
     volumes:
       - ./backend:/source/app

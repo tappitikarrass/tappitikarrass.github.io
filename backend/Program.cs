@@ -1,5 +1,3 @@
-using Microsoft.OpenApi.Models;
-
 namespace PersonalWebsiteBackend;
 
 public class Program
@@ -13,24 +11,40 @@ public class Program
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1",
-                    new OpenApiInfo
+                    new()
                     {
-                        Title = "Personal Website API",
                         Version = "v1",
+                        Title = "Personal Website API",
                         Description = "Simple API for personal website",
-                        License = new OpenApiLicense() { Name = "MIT" },
-                    }
-                    );
+                        Contact = new()
+                        {
+                            Name = "Developer",
+                            Url = new("https://tappitikarrass.github.io/"),
+                            Email = "lytvyn.andrii.contact@gmail.com"
+                        },
+                        License = new()
+                        {
+                            Name = "MIT",
+                            Url = new("https://opensource.org/licenses/MIT")
+                        },
+                    });
         });
 
         var app = builder.Build();
 
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger();
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = "api/swagger/{documentName}/swagger.json";
+            });
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = "api/swagger";
+            });
             app.UseReDoc(c =>
             {
-                c.RoutePrefix = "docs";
+                c.RoutePrefix = "api/redoc";
             });
         }
 
