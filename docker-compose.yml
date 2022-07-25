@@ -5,20 +5,5 @@ services:
     build:
       context: ./
       dockerfile: ./docker/Web/Dockerfile
-    depends_on:
-      - postgres
-  postgres:
-    container_name: postgres
-    image: postgres:14.4-alpine
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-  nginx:
-    container_name: nginx
-    build:
-      context: ./
-      dockerfile: ./docker/Nginx/Dockerfile
     ports:
       - 80:80
-    depends_on:
-      - web
