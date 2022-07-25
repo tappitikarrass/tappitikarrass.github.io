@@ -1,3 +1,5 @@
+using Microsoft.OpenApi.Models;
+
 namespace PersonalWebsiteBackend;
 
 public class Program
@@ -6,29 +8,36 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
-
         builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Personal Website API",
+                        Version = "v1",
+                        Description = "Simple API for personal website",
+                        License = new OpenApiLicense() { Name = "MIT" },
+                    }
+                    );
+        });
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseReDoc(c =>
+            {
+                c.RoutePrefix = "docs";
+            });
         }
 
         app.UseHttpsRedirection();
-
         app.UseAuthorization();
-
         app.MapControllers();
 
         app.Run();
     }
 }
-
