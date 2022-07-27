@@ -14,5 +14,6 @@
 > Makefile inside this directory has only one target. It's `watch` that run `dotnet watch` locally with necessary environment variables.
 
 ## Current objectives
-- [ ] Simple readonly json data storage 
+- [x] Simple readonly json data storage 
+- [ ] Improve a way in which user obtains json store object
 - [ ] Json validation
