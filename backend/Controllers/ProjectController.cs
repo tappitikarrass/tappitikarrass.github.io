@@ -11,31 +11,6 @@ namespace PersonalWebsiteBackend.Controllers;
 public class ProjectController : ControllerBase
 {
     /// <summary>
-    /// Get project by id.
-    /// </summary>
-    [Route("{id}")]
-    [HttpGet]
-    public async Task<ActionResult<Project>> GetAsync(long id)
-    {
-        var store = await InitJsonAsync();
-
-        var projects = store.GetCollection<Project>();
-
-        Project result;
-
-        try
-        {
-            result = projects.AsQueryable().Where(e => e.Id == id).First();
-        }
-        catch (InvalidOperationException)
-        {
-            return NotFound();
-        }
-
-        return result;
-    }
-
-    /// <summary>
     /// Get projects list.
     /// </summary>
     [HttpGet]
@@ -48,6 +23,7 @@ public class ProjectController : ControllerBase
         return new(projects);
     }
 
+    // TODO: Remove this method and provide a better way to obtain store object
     private async Task<DataStore> InitJsonAsync()
     {
         string path = "Store.json";
@@ -67,9 +43,12 @@ public class ProjectController : ControllerBase
 
         var projects = store.GetCollection<Project>();
 
-        Project proj1 = new(1, "Project 1", "https://example.com");
-        Project proj2 = new(2, "Project 2", "https://example.com");
-        Project proj3 = new(3, "Project 3", "https://example.com");
+        string[] tags1 = new[] { "ts", "react", "mui5", "c#", "aspnetcore" };
+        string[] tags2 = new[] { "c#", "telegram-bot", "redis" };
+        string[] tags3 = new[] { "python", "flask", "postgres", "react" };
+        Project proj1 = new(1, "tappitikarrass.github.io", "https://github.com/tappitikarrass/tappitikarrass.github.io", ProjectType.Github, tags1);
+        Project proj2 = new(2, "telegram-queue-bot", "https://github.com/tappitikarrass/telegram-queue-bot", ProjectType.Github, tags2);
+        Project proj3 = new(3, "flask-ap", "https://github.com/tappitikarrass/flask-ap", ProjectType.Url, tags3);
         await projects.InsertManyAsync(new List<Project>() { proj1, proj2, proj3 });
 
         await store.InsertItemAsync("projects", projects);

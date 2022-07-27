@@ -2,21 +2,47 @@
   "project": [
     {
       "id": 1,
-      "name": "Project 1",
-      "url": "https://example.com"
+      "name": "tappitikarrass.github.io",
+      "url": "https://github.com/tappitikarrass/tappitikarrass.github.io",
+      "type": 0,
+      "tags": [
+        "ts",
+        "react",
+        "mui5",
+        "c#",
+        "aspnetcore"
+      ]
     },
     {
       "id": 2,
-      "name": "Project 2",
-      "url": "https://example.com"
+      "name": "telegram-queue-bot",
+      "url": "https://github.com/tappitikarrass/telegram-queue-bot",
+      "type": 0,
+      "tags": [
+        "c#",
+        "telegram-bot",
+        "redis"
+      ]
     },
     {
       "id": 3,
-      "name": "Project 3",
-      "url": "https://example.com"
+      "name": "flask-ap",
+      "url": "https://github.com/tappitikarrass/flask-ap",
+      "type": 1,
+      "tags": [
+        "python",
+        "flask",
+        "postgres",
+        "react"
+      ]
     }
   ],
   "projects": {
     "count": 3
+  },
+  "aboutMe": {
+    "name": "Andrii Lytvyn",
+    "email": "lytvyn.andrii.contact@gmail.com",
+    "text": "I am CS(AI) student at Lviv Polytechnic National University.\n\nI have experience with Python, Flask, Linux and SQL.\n\nI like to work with Docker and Typescript.\n\nI'm currently learning C#, .NET Core, ASP.NET Core, TypeScript and React."
   }
 }

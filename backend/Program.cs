@@ -8,6 +8,7 @@ public class Program
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddCors();
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1",
@@ -31,13 +32,13 @@ public class Program
         });
 
         var app = builder.Build();
+        app.UseSwagger(c =>
+        {
+            c.RouteTemplate = "api/swagger/{documentName}/swagger.json";
+        });
 
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger(c =>
-            {
-                c.RouteTemplate = "api/swagger/{documentName}/swagger.json";
-            });
             app.UseSwaggerUI(c =>
             {
                 c.RoutePrefix = "api/swagger";
@@ -47,8 +48,20 @@ public class Program
                 c.RoutePrefix = "api/redoc";
             });
         }
+        else
+        {
+            app.UseReDoc(c =>
+            {
+                c.SpecUrl = "api/swagger/v1/swagger.json";
+                c.RoutePrefix = String.Empty;
+            });
+        }
 
         app.UseHttpsRedirection();
+        app.UseCors(c =>
+        {
+            c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        });
         app.UseAuthorization();
         app.MapControllers();
 
