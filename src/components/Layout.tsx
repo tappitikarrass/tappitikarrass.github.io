@@ -10,6 +10,7 @@ import {
   CssBaseline,
 } from "@mui/material";
 import Menu from "./Menu";
+import Footer from "./Footer";
 
 interface Props {
   children?: ReactNode;
@@ -81,15 +82,18 @@ export default function Layout({ children }: Props) {
         <Paper elevation={1} sx={{ bgcolor: "black" }}>
           <Grid justifyContent="center" spacing={4} container>
             <Grid item sm={12} md={10} lg={8}>
+              <Menu />
               <Paper
                 className="content"
                 variant="outlined"
                 square
-                sx={{ minHeight: "100vh" }}
+                sx={{ minHeight: "85vh", paddingTop: "2vh" }}
               >
-                <Menu />
-                <Container maxWidth="xl">{children}</Container>
+                <Container maxWidth="xl" sx={{ marginBottom: "3vh" }}>
+                  {children}
+                </Container>
               </Paper>
+              <Footer />
             </Grid>
           </Grid>
         </Paper>

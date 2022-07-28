@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useTheme } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PublicIcon from "@mui/icons-material/Public";
 import ReactMarkdown from "react-markdown";
-import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
-import { styled } from "@mui/material/styles";
 import {
-  // Accordion,
+  Accordion,
   Box,
   Typography,
   AccordionDetails,
@@ -20,29 +19,6 @@ import rehypeSlug from "rehype-slug";
 import rehypeRaw from "rehype-raw";
 import ProjectTags from "./ProjectTags";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-// import "github-markdown-css";
-// import "github-markdown-css/github-markdown-dark.css";
-// import "github-markdown-css/github-markdown-light.css";
-
-const Accordion = styled((props: AccordionProps) => (
-  <MuiAccordion disableGutters elevation={1} square {...props} />
-))(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-  "&:not(:last-child)": {
-    borderBottom: 0,
-  },
-  "&:first-of-type": {
-    borderTopLeftRadius: "4px",
-    borderTopRightRadius: "4px",
-  },
-  "&:last-child": {
-    borderBottomLeftRadius: "4px",
-    borderBottomRightRadius: "4px",
-  },
-  "&:before": {
-    display: "none",
-  },
-}));
 
 enum ProjectType {
   Github,
@@ -61,6 +37,7 @@ type Project = {
 export default function ProjectsList() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [readmes, setReadmes] = useState<{ [key: string]: string }>({});
+  const theme = useTheme();
 
   useEffect(() => {
     axios
@@ -71,7 +48,7 @@ export default function ProjectsList() {
   }, []);
 
   return (
-    <Grid justifyContent="center" container>
+    <Grid justifyContent="center" spacing={2} container>
       {projects.map((value: Project) => (
         <Grid
           item
@@ -88,6 +65,9 @@ export default function ProjectsList() {
           }}
         >
           <Accordion
+            sx={{
+              border: `1px solid ${theme.palette.divider}`,
+            }}
             onChange={() => {
               if (readmes[value.repoName] === undefined) {
                 axios
@@ -124,13 +104,14 @@ export default function ProjectsList() {
                 </Grid>
                 {/* tags */}
                 <Grid item xs={false} sx={{ marginRight: 2 }}>
+                  {/* TODO: do not hide chips on narrow screens, but draw underneath */}
                   <Stack
                     direction="row"
                     spacing={1}
                     sx={{
                       display: {
                         xs: "none",
-                        sm: "none",
+                        sm: "block",
                         md: "block",
                         lg: "block",
                         xl: "block",

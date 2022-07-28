@@ -43,7 +43,7 @@ public class AboutMeController : ControllerBase
 
         var projects = store.GetCollection<Project>();
 
-        string[] tags1 = new[] { "ts", "react", "mui5", "c#", "aspnetcore" };
+        string[] tags1 = new[] { "ts", "react", "c#", "aspnetcore" };
         Project proj1 = new(1, "tappitikarrass", "tappitikarrass.github.io", ProjectType.Github, tags1);
 
         string[] tags2 = new[] { "c#", "telegram-bot", "redis" };
