@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, Grid, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardHeader,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import axios from "axios";
 import ProjectsList from "../components/ProjectsList";
 
@@ -24,16 +33,54 @@ function AboutMe() {
       sx={{
         width: "100%",
         border: `1px solid ${theme.palette.divider}`,
+        display: "flex",
+        flexDirection: {
+          xs: "column",
+          sm: "column",
+          md: "row",
+          lg: "row",
+          xl: "row",
+        },
+        alignItems: { xs: "center" },
+        justifyContent: { xs: "center" },
+        paddingTop: { xs: 10, sm: 10, md: 0, lg: 0, xl: 0 },
       }}
     >
-      <CardContent>
-        <Typography variant="subtitle1" component="div">
-          {info?.name}
-        </Typography>
-        <Typography variant="body1" component="div">
-          {info?.text}
-        </Typography>
-      </CardContent>
+      <CardMedia
+        component="img"
+        image="user.jpg"
+        alt="Andrii Lytvyn"
+        sx={{
+          width: 200,
+          borderRadius: "4px",
+          marginRight: "1vw",
+        }}
+      />
+      <Box sx={{}}>
+        <CardHeader
+          title={
+            <Typography
+              sx={{
+                textAlign: {
+                  xs: "center",
+                  sm: "center",
+                  md: "left",
+                  lg: "left",
+                  xl: "left",
+                },
+              }}
+              variant="h6"
+            >
+              {info?.name}
+            </Typography>
+          }
+        ></CardHeader>
+        <CardContent>
+          <Typography variant="body1" component="div">
+            {info?.text}
+          </Typography>
+        </CardContent>
+      </Box>
     </Card>
   );
 }
