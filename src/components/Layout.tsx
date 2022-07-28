@@ -68,9 +68,9 @@ export default function Layout({ children }: Props) {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Paper>
+        <Paper elevation={1} sx={{ bgcolor: "black" }}>
           <Grid justifyContent="center" spacing={4} container>
-            <Grid item sm={12} md={8} lg={8}>
+            <Grid item sm={12} md={10} lg={8}>
               <Paper className="content" variant="outlined" square>
                 <Menu />
                 <Container maxWidth="xl">{children}</Container>

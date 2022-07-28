@@ -9,7 +9,7 @@ export default function ProjectTags({ tags }: ProjectTagsProps) {
   return (
     <Stack direction="row" spacing={1}>
       {tags.map((value: string) => (
-        <Chip key={value} label={value} color="primary" />
+        <Chip key={value} label={value} />
       ))}
     </Stack>
   );

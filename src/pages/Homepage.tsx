@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography, useTheme } from "@mui/material";
 import axios from "axios";
 import ProjectsList from "../components/ProjectsList";
-// import dotnetSvg from "../imgs/dotnet.svg";
-// import redisSvg from "../imgs/redis.svg";
-// import csharpSvg from "../imgs/csharp.svg";
-// import postgresSvg from "../imgs/postgres.svg";
 
 type AboutMeInfo = {
   name: string;
@@ -15,6 +11,7 @@ type AboutMeInfo = {
 
 function AboutMe() {
   const [info, setInfo] = useState<AboutMeInfo>();
+  const theme = useTheme();
 
   useEffect(() => {
     axios.get("https://localhost:5001/api/aboutme").then((response) => {
@@ -23,12 +20,16 @@ function AboutMe() {
   }, []);
 
   return (
-    <Card sx={{ width: "100%" }}>
+    <Card
+      sx={{
+        width: "100%",
+        border: `1px solid ${theme.palette.divider}`,
+      }}
+    >
       <CardContent>
         <Typography variant="subtitle1" component="div">
           {info?.name}
         </Typography>
-
         <Typography variant="body1" component="div">
           {info?.text}
         </Typography>

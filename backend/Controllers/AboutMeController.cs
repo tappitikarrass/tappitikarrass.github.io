@@ -44,13 +44,13 @@ public class AboutMeController : ControllerBase
         var projects = store.GetCollection<Project>();
 
         string[] tags1 = new[] { "ts", "react", "mui5", "c#", "aspnetcore" };
-        Project proj1 = new(1, "tappitikarrass.github.io", "https://github.com/tappitikarrass/tappitikarrass.github.io", ProjectType.Github, tags1);
+        Project proj1 = new(1, "tappitikarrass", "tappitikarrass.github.io", ProjectType.Github, tags1);
 
         string[] tags2 = new[] { "c#", "telegram-bot", "redis" };
-        Project proj2 = new(2, "telegram-queue-bot", "https://github.com/tappitikarrass/telegram-queue-bot", ProjectType.Github, tags2);
+        Project proj2 = new(2, "tappitikarrass", "telegram-queue-bot", ProjectType.Github, tags2);
 
         string[] tags3 = new[] { "python", "flask", "postgres", "react" };
-        Project proj3 = new(3, "flask-ap", "https://github.com/tappitikarrass/flask-ap", ProjectType.Url, tags3);
+        Project proj3 = new(3, "tappitikarrass", "flask-ap", ProjectType.Url, tags3);
 
         await projects.InsertManyAsync(new List<Project>() { proj1, proj2, proj3 });
         await store.InsertItemAsync("projects", projects);

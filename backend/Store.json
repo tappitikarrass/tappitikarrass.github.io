@@ -2,7 +2,8 @@
   "project": [
     {
       "id": 1,
-      "name": "tappitikarrass.github.io",
+      "userName": "tappitikarrass",
+      "repoName": "tappitikarrass.github.io",
       "url": "https://github.com/tappitikarrass/tappitikarrass.github.io",
       "type": 0,
       "tags": [
@@ -15,7 +16,8 @@
     },
     {
       "id": 2,
-      "name": "telegram-queue-bot",
+      "userName": "tappitikarrass",
+      "repoName": "telegram-queue-bot",
       "url": "https://github.com/tappitikarrass/telegram-queue-bot",
       "type": 0,
       "tags": [
@@ -26,7 +28,8 @@
     },
     {
       "id": 3,
-      "name": "flask-ap",
+      "userName": "tappitikarrass",
+      "repoName": "flask-ap",
       "url": "https://github.com/tappitikarrass/flask-ap",
       "type": 1,
       "tags": [

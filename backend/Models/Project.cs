@@ -10,7 +10,9 @@ public class Project
     [Required]
     public long Id { get; private set; }
     [Required]
-    public string Name { get; private set; }
+    public string UserName { get; private set; }
+    [Required]
+    public string RepoName { get; private set; }
     [Url]
     [Required]
     public string Url { get; private set; }
@@ -20,11 +22,12 @@ public class Project
     [Required]
     public string[] Tags { get; private set; }
 
-    public Project(long id, string name, string url, ProjectType type, string[] tags)
+    public Project(long id, string userName, string repoName, ProjectType type, string[] tags)
     {
         Id = id;
-        Name = name;
-        Url = url;
+        UserName = userName;
+        RepoName = repoName;
+        Url = $"https://github.com/{UserName}/{RepoName}";
         Type = type;
         Tags = tags;
     }
