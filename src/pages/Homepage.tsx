@@ -53,7 +53,7 @@ export default function Homepage() {
           <AboutMe />
         </Grid>
         <Grid item>
-          <Typography variant="h5" component="div" align="center">
+          <Typography gutterBottom variant="h5" component="div" align="center">
             Projects
           </Typography>
           <ProjectsList />
