@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useMemo, useEffect, useState, createContext } from "react";
 import { ReactNode } from "react";
 import {
   useMediaQuery,
@@ -10,13 +10,12 @@ import {
   CssBaseline,
 } from "@mui/material";
 import Menu from "./Menu";
-import "../css/Layout.css";
 
 interface Props {
   children?: ReactNode;
 }
 
-export const ColorModeContext = React.createContext({
+export const ColorModeContext = createContext({
   toggleColorMode: () => {
     console.log("never executed");
   },
@@ -37,20 +36,11 @@ export default function Layout({ children }: Props) {
     }
   }
 
-  const [mode, setMode] = React.useState<"light" | "dark">(
+  const [mode, setMode] = useState<"light" | "dark">(
     defaultMode === "dark" ? "dark" : "light"
   );
 
-  const colorMode = React.useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
-    }),
-    []
-  );
-
-  const theme = React.useMemo(
+  const theme = useMemo(
     () =>
       createTheme({
         palette: {
@@ -58,6 +48,26 @@ export default function Layout({ children }: Props) {
         },
       }),
     [mode]
+  );
+
+  const [cssPath, setCssPath] = useState<string>(
+    defaultMode === "dark"
+      ? "github-markdown-dark.css"
+      : "github-markdown-light.css"
+  );
+
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+        if (theme.palette.mode === "dark") {
+          setCssPath("github-markdown-light.css");
+        } else {
+          setCssPath("github-markdown-dark.css");
+        }
+      },
+    }),
+    []
   );
 
   useEffect(() => {
@@ -71,7 +81,12 @@ export default function Layout({ children }: Props) {
         <Paper elevation={1} sx={{ bgcolor: "black" }}>
           <Grid justifyContent="center" spacing={4} container>
             <Grid item sm={12} md={10} lg={8}>
-              <Paper className="content" variant="outlined" square>
+              <Paper
+                className="content"
+                variant="outlined"
+                square
+                sx={{ minHeight: "100vh" }}
+              >
                 <Menu />
                 <Container maxWidth="xl">{children}</Container>
               </Paper>

@@ -20,7 +20,9 @@ import rehypeSlug from "rehype-slug";
 import rehypeRaw from "rehype-raw";
 import ProjectTags from "./ProjectTags";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import "github-markdown-css";
+// import "github-markdown-css";
+// import "github-markdown-css/github-markdown-dark.css";
+// import "github-markdown-css/github-markdown-light.css";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={1} square {...props} />
@@ -29,7 +31,7 @@ const Accordion = styled((props: AccordionProps) => (
   "&:not(:last-child)": {
     borderBottom: 0,
   },
-  "&:first-child": {
+  "&:first-of-type": {
     borderTopLeftRadius: "4px",
     borderTopRightRadius: "4px",
   },
@@ -59,7 +61,6 @@ type Project = {
 export default function ProjectsList() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [readmes, setReadmes] = useState<{ [key: string]: string }>({});
-  const theme = useTheme();
 
   useEffect(() => {
     axios
@@ -71,6 +72,14 @@ export default function ProjectsList() {
 
   return (
     <div>
+      {/*<Helmet>
+        {theme.palette.mode === "dark" ? (
+          <link rel="stylesheet" href="../css/github-markdown-dark.css" />
+        ) : (
+          <link rel="stylesheet" href="../css/github-markdown-light.css" />
+        )}
+      </Helmet>*/}
+
       {projects.map((value: Project) => (
         <Accordion
           key={value.id}
@@ -128,14 +137,12 @@ export default function ProjectsList() {
                 window.open(value.url, "_blank", "noopener,noreferrer")
               }
             />
-            <div style={{}}>
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeSlug, rehypeRaw]}
-              >
-                {readmes[value.repoName]}
-              </ReactMarkdown>
-            </div>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeSlug, rehypeRaw]}
+            >
+              {readmes[value.repoName]}
+            </ReactMarkdown>
           </AccordionDetails>
         </Accordion>
       ))}
