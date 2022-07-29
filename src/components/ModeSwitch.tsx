@@ -40,7 +40,7 @@ export default function ModeSwitch() {
         }
       }}
     >
-      {theme.palette.mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
+      {theme.palette.mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
     </IconButton>
   );
 }

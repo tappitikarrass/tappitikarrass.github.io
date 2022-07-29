@@ -57,7 +57,7 @@ export default function ProjectsList() {
             width: "100%",
             maxWidth: {
               xs: "93vw",
-              sm: "93vw",
+              sm: "77vw",
               md: "77vw",
               lg: "80vw",
               xl: "80vw",
@@ -90,36 +90,51 @@ export default function ProjectsList() {
             disableGutters
           >
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Grid alignItems="center" container>
+              <Grid
+                alignItems="center"
+                container
+                sx={{
+                  flexDirection: {
+                    xs: "column",
+                    sm: "column",
+                    md: "row",
+                    lg: "row",
+                    xl: "row",
+                  },
+                  flexWrap: "nowrap",
+                  justifyContent: "right",
+                  alignItems: {
+                    xs: "right",
+                    sm: "right",
+                    md: "center",
+                    lg: "center",
+                    xl: "center",
+                  },
+                }}
+              >
                 {/* icon */}
                 <Grid item xs={true}>
                   <Stack direction="row">
                     {value.type == ProjectType.Github ? (
-                      <GitHubIcon sx={{ marginRight: 3 }} />
+                      <GitHubIcon sx={{ marginRight: "1em" }} />
                     ) : (
-                      <PublicIcon sx={{ marginRight: 3 }} />
+                      <PublicIcon sx={{ marginRight: "1em" }} />
                     )}
-                    <Typography>{value.repoName}</Typography>
+                    <Typography sx={{ marginRight: "2em" }}>
+                      {value.repoName}
+                    </Typography>
                   </Stack>
                 </Grid>
                 {/* tags */}
-                <Grid item xs={false} sx={{ marginRight: 2 }}>
-                  {/* TODO: do not hide chips on narrow screens, but draw underneath */}
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    sx={{
-                      display: {
-                        xs: "none",
-                        sm: "block",
-                        md: "block",
-                        lg: "block",
-                        xl: "block",
-                      },
-                    }}
-                  >
-                    <ProjectTags tags={value.tags} />
-                  </Stack>
+                <Grid
+                  item
+                  xs={false}
+                  sx={{
+                    marginRight: 2,
+                    marginTop: { xs: "1em", sm: "1em", md: 0, lg: 0, lx: 0 },
+                  }}
+                >
+                  <ProjectTags tags={value.tags} />
                 </Grid>
               </Grid>
             </AccordionSummary>
@@ -128,10 +143,21 @@ export default function ProjectsList() {
                 padding: 0,
               }}
             >
-              <Box className="markdown-body" sx={{ padding: "1vw" }}>
-                <div style={{ marginLeft: "5vw", marginRight: "5vw" }}>
-                  {/* project buttons */}
-                  <Stack direction="row" spacing={2} sx={{ paddingTop: "1em" }}>
+              <Box
+                className="markdown-body"
+                sx={{
+                  p: "2em",
+                  paddingTop: "1.5em",
+                }}
+              >
+                {/* project buttons */}
+                <Grid
+                  container
+                  direction="row"
+                  spacing={2}
+                  sx={{ paddingBottom: "1em", flexWrap: "true" }}
+                >
+                  <Grid item>
                     <Chip
                       icon={<GitHubIcon />}
                       label="View on GitHub"
@@ -141,14 +167,14 @@ export default function ProjectsList() {
                         window.open(value.url, "_blank", "noopener,noreferrer")
                       }
                     />
-                  </Stack>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeSlug, rehypeRaw]}
-                  >
-                    {readmes[value.repoName]}
-                  </ReactMarkdown>
-                </div>
+                  </Grid>
+                </Grid>
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeSlug, rehypeRaw]}
+                >
+                  {readmes[value.repoName]}
+                </ReactMarkdown>
               </Box>
             </AccordionDetails>
           </Accordion>

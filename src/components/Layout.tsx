@@ -79,21 +79,31 @@ export default function Layout({ children }: Props) {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Paper elevation={1} sx={{ bgcolor: "black" }}>
+        <Paper elevation={0}>
           <Grid justifyContent="center" spacing={4} container>
-            <Grid item sm={12} md={10} lg={8}>
-              <Menu />
+            <Grid item xs={12} sm={10} md={10} lg={8} xl={8}>
               <Paper
-                className="content"
                 variant="outlined"
                 square
-                sx={{ minHeight: "85vh", paddingTop: "2vh" }}
+                sx={{
+                  minHeight: "100vh",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
               >
-                <Container maxWidth="xl" sx={{ marginBottom: "3vh" }}>
-                  {children}
-                </Container>
+                <Menu />
+                <main>
+                  <Container
+                    maxWidth="xl"
+                    sx={{
+                      my: "1.5em",
+                    }}
+                  >
+                    {children}
+                  </Container>
+                </main>
+                <Footer />
               </Paper>
-              <Footer />
             </Grid>
           </Grid>
         </Paper>

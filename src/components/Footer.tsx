@@ -1,23 +1,27 @@
 import React from "react";
-import { Paper, Typography } from "@mui/material";
+import { Paper, Typography, useTheme } from "@mui/material";
 
 export default function Footer() {
+  const theme = useTheme();
+
   const year = new Date().getFullYear();
 
   return (
     <footer
       style={{
-        // flexShrink: 0,
         textAlign: "center",
-        backgroundColor: "tomato",
-        color: "white",
+        marginTop: "auto",
+        borderTop: `1px solid ${theme.palette.divider}`,
       }}
     >
       <Paper square>
         <Typography
-          variant="body2"
+          variant="subtitle2"
           color="text.secondary"
-          sx={{ paddingTop: "2.5vh", minHeight: "7vh" }}
+          component="div"
+          sx={{
+            py: "1.5em",
+          }}
         >
           Copyright (C) {year} Andrii Lytvyn
         </Typography>

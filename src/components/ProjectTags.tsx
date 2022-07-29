@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Chip } from "@mui/material";
+import { Grid, Chip } from "@mui/material";
 
 type ProjectTagsProps = {
   tags: string[];
@@ -7,10 +7,12 @@ type ProjectTagsProps = {
 
 export default function ProjectTags({ tags }: ProjectTagsProps) {
   return (
-    <Stack direction="row" spacing={1}>
+    <Grid container direction="row" spacing={1}>
       {tags.map((value: string) => (
-        <Chip key={value} label={value} />
+        <Grid key={value} item>
+          <Chip key={value} label={value} />
+        </Grid>
       ))}
-    </Stack>
+    </Grid>
   );
 }
