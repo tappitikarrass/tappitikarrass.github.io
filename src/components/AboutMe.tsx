@@ -46,7 +46,7 @@ export default function AboutMe() {
         >
           <CardMedia
             component="img"
-            image="user.jpg"
+            image="user.png"
             alt="Andrii Lytvyn"
             sx={{
               width: 200,
