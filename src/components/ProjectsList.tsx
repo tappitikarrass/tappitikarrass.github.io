@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useTheme } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -11,45 +11,25 @@ import {
   AccordionDetails,
   AccordionSummary,
   Stack,
-  Chip,
   Grid,
 } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import remarkGfm from "remark-gfm";
+import emoji from "remark-emoji";
 import rehypeSlug from "rehype-slug";
 import rehypeRaw from "rehype-raw";
 import ProjectTags from "./ProjectTags";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-enum ProjectType {
-  Github,
-  Url,
-}
-
-type Project = {
-  id: number;
-  repoName: string;
-  userName: string;
-  url: string;
-  type: ProjectType;
-  tags: string[];
-};
+import ProjectButtons from "../components/ProjectButtons";
+import { Project, ProjectType } from "../Models";
+import Store from "../Store.json";
 
 export default function ProjectsList() {
-  const [projects, setProjects] = useState<Project[]>([]);
   const [readmes, setReadmes] = useState<{ [key: string]: string }>({});
   const theme = useTheme();
 
-  useEffect(() => {
-    axios
-      .get<Project[]>("https://localhost:5001/api/project")
-      .then((response) => {
-        setProjects(response.data);
-      });
-  }, []);
-
   return (
     <Grid justifyContent="center" spacing={2} container>
-      {projects.map((value: Project) => (
+      {Store.project.map((value: Project) => (
         <Grid
           item
           key={value.id}
@@ -146,31 +126,14 @@ export default function ProjectsList() {
               <Box
                 className="markdown-body"
                 sx={{
-                  p: "2em",
-                  paddingTop: "1.5em",
+                  p: "1.5em",
+                  paddingTop: "1em",
                 }}
               >
                 {/* project buttons */}
-                <Grid
-                  container
-                  direction="row"
-                  spacing={2}
-                  sx={{ paddingBottom: "1em", flexWrap: "true" }}
-                >
-                  <Grid item>
-                    <Chip
-                      icon={<GitHubIcon />}
-                      label="View on GitHub"
-                      color="primary"
-                      variant="filled"
-                      onClick={() =>
-                        window.open(value.url, "_blank", "noopener,noreferrer")
-                      }
-                    />
-                  </Grid>
-                </Grid>
+                <ProjectButtons project={value} />
                 <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
+                  remarkPlugins={[remarkGfm, emoji]}
                   rehypePlugins={[rehypeSlug, rehypeRaw]}
                 >
                   {readmes[value.repoName]}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   useTheme,
   Paper,
@@ -9,7 +9,7 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import axios from "axios";
+import Store from "../Store.json";
 
 export type AboutMeInfo = {
   name: string;
@@ -18,14 +18,7 @@ export type AboutMeInfo = {
 };
 
 export default function AboutMe() {
-  const [info, setInfo] = useState<AboutMeInfo>();
   const theme = useTheme();
-
-  useEffect(() => {
-    axios.get("https://localhost:5001/api/aboutme").then((response) => {
-      setInfo(response.data);
-    });
-  }, []);
 
   return (
     <Paper elevation={0}>
@@ -57,6 +50,7 @@ export default function AboutMe() {
             alt="Andrii Lytvyn"
             sx={{
               width: 200,
+              height: 200,
               borderRadius: "4px",
               borderTopRightRadius: { md: 0, lg: 0, xl: 0 },
               borderBottomRightRadius: { md: 0, lg: 0, xl: 0 },
@@ -82,12 +76,12 @@ export default function AboutMe() {
                 }}
                 variant="h6"
               >
-                {info?.name}
+                {Store.aboutMe?.name}
               </Typography>
             }
           ></CardHeader>
           <CardContent>
-            <Typography variant="body1">{info?.text}</Typography>
+            <Typography variant="body1">{Store.aboutMe?.text}</Typography>
           </CardContent>
         </Box>
       </Card>
