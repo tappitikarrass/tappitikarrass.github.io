@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useMemo, useEffect, useState, createContext } from "react";
 import { ReactNode } from "react";
 import {
   useMediaQuery,
@@ -10,13 +10,13 @@ import {
   CssBaseline,
 } from "@mui/material";
 import Menu from "./Menu";
-import "../css/Layout.css";
+import Footer from "./Footer";
 
 interface Props {
   children?: ReactNode;
 }
 
-export const ColorModeContext = React.createContext({
+export const ColorModeContext = createContext({
   toggleColorMode: () => {
     console.log("never executed");
   },
@@ -37,20 +37,11 @@ export default function Layout({ children }: Props) {
     }
   }
 
-  const [mode, setMode] = React.useState<"light" | "dark">(
+  const [mode, setMode] = useState<"light" | "dark">(
     defaultMode === "dark" ? "dark" : "light"
   );
 
-  const colorMode = React.useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
-    }),
-    []
-  );
-
-  const theme = React.useMemo(
+  const theme = useMemo(
     () =>
       createTheme({
         palette: {
@@ -58,6 +49,26 @@ export default function Layout({ children }: Props) {
         },
       }),
     [mode]
+  );
+
+  const [cssPath, setCssPath] = useState<string>(
+    defaultMode === "dark"
+      ? "github-markdown-dark.css"
+      : "github-markdown-light.css"
+  );
+
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+        if (theme.palette.mode === "dark") {
+          setCssPath("github-markdown-light.css");
+        } else {
+          setCssPath("github-markdown-dark.css");
+        }
+      },
+    }),
+    []
   );
 
   useEffect(() => {
@@ -68,12 +79,30 @@ export default function Layout({ children }: Props) {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Paper>
+        <Paper elevation={0}>
           <Grid justifyContent="center" spacing={4} container>
-            <Grid item sm={12} md={8} lg={8}>
-              <Paper className="content" variant="outlined" square>
+            <Grid item xs={12} sm={10} md={10} lg={8} xl={8}>
+              <Paper
+                variant="outlined"
+                square
+                sx={{
+                  minHeight: "100vh",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
                 <Menu />
-                <Container maxWidth="xl">{children}</Container>
+                <main>
+                  <Container
+                    maxWidth="xl"
+                    sx={{
+                      my: "1.5em",
+                    }}
+                  >
+                    {children}
+                  </Container>
+                </main>
+                <Footer />
               </Paper>
             </Grid>
           </Grid>
