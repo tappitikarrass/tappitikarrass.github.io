@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid, Typography } from "@mui/material";
 import ProjectsList from "../components/ProjectsList";
 import AboutMe from "../components/AboutMe";
