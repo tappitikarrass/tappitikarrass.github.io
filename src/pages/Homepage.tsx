@@ -5,10 +5,6 @@ import AboutMe from "../components/AboutMe";
 // import Test from "../components/Test";
 
 export default function Homepage() {
-  useEffect(() => {
-    document.title = "Homepage :: Andrii Lytvyn";
-  }, []);
-
   return (
     <div>
       <Grid spacing={2} justifyContent="center" direction="column" container>

@@ -63,7 +63,11 @@ export default function AboutMe() {
             }}
           />
         </Paper>
-        <Box>
+        <Box
+          sx={{
+            marginLeft: { xs: 0, sm: 0, md: "1em", lg: "1em", xl: "1em" },
+          }}
+        >
           <CardHeader
             title={
               <Typography
@@ -83,9 +87,7 @@ export default function AboutMe() {
             }
           ></CardHeader>
           <CardContent>
-            <Typography variant="body1" component="div">
-              {info?.text}
-            </Typography>
+            <Typography variant="body1">{info?.text}</Typography>
           </CardContent>
         </Box>
       </Card>

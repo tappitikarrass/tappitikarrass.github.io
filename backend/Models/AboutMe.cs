@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace PersonalWebsiteBackend.Controllers;
+namespace PersonalWebsiteBackend.Models;
 
 public class AboutMe
 {

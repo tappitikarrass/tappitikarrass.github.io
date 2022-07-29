@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/github/license/tappitikarrass/personal-website)](#)
 <br>
-[![](https://img.shields.io/badge/-npm-npm?logo=npm&logoColor=&colorB=white)](#)
+[![](https://img.shields.io/badge/-pnpm-pnpm?logo=pnpm&logoColor=&colorB=black)](#)
 [![](https://img.shields.io/badge/-ESLint-4B32C3?logo=ESLint&logoColor=white)](#)
 [![](https://img.shields.io/badge/-Prettier-F7B93E?logo=Prettier&logoColor=black)](#)
 <br>
