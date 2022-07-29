@@ -18,11 +18,12 @@ My personal website built with React, TypeScript and MUI v5.
 
 - [ ] Make ASP.NET backend
 - [ ] Make better technologies & products listing
-- [ ] Create new pages:
-  - [ ] About me
-  - [ ] ???
-- [ ] Implement routing with `react-router`
-- [ ] ???
+  - [x] Projects
+  - [ ] Make dynamic buttons based on project metadata
+  - [ ] Technologies
+- [x] Add repo readme rendering feature
+- [ ] Deploy to Heroku
+  - [ ] Add `heroku.yml`
 
 <!-- ## create-react-app readme -->
 <!---->
