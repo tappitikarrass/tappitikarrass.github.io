@@ -9,8 +9,7 @@
       "tags": [
         "ts",
         "react",
-        "c#",
-        "aspnetcore"
+        "mui-v5"
       ]
     },
     {
@@ -28,8 +27,8 @@
     {
       "id": 3,
       "userName": "tappitikarrass",
-      "repoName": "flask-ap",
-      "url": "https://github.com/tappitikarrass/flask-ap",
+      "repoName": "flask-ani",
+      "url": "https://github.com/tappitikarrass/flask-ani",
       "type": 0,
       "tags": [
         "python",
@@ -47,15 +46,11 @@
       "tags": [
         "bash",
         "archlinux",
-        "automation",
         "wsl",
         "docker"
       ]
     }
   ],
-  "projects": {
-    "count": 3
-  },
   "aboutMe": {
     "name": "Andrii Lytvyn",
     "email": "lytvyn.andrii.contact@gmail.com",
