@@ -12,7 +12,7 @@ import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import MailIcon from "@mui/icons-material/Mail";
 import useSound from "use-sound";
 import ModeSwitch from "./ModeSwitch";
-import tutturuuu from "../audio/tutturuuu.mp3";
+import tutturuuu from "../assets/audio/tutturuuu.mp3";
 
 export default function Menu() {
   const [play] = useSound(tutturuuu);
