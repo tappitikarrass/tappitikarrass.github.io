@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import Store from "../Store.json";
+import ProfilePicture from "../assets/imgs/profile.png";
 
 export type AboutMeInfo = {
   name: string;
@@ -46,7 +47,7 @@ export default function AboutMe() {
         >
           <CardMedia
             component="img"
-            image="user.png"
+            image={ProfilePicture}
             alt="Andrii Lytvyn"
             sx={{
               width: 200,
