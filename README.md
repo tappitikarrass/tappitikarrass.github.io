@@ -1,4 +1,4 @@
-# personal website (WIP)
+# tappitikarrass.github.io
 
 [![](https://img.shields.io/github/license/tappitikarrass/personal-website)](#)
 <br>
@@ -17,5 +17,6 @@ My personal website built with React, TypeScript and MUI v5.
 
 ## Todo
 
-- Add technologies and tools listing
-- Make dynamic buttons based on project metadata
+- [x] Add projects & tools listing
+- [ ] Add functionality to CV button
+- [ ] Make dynamic buttons based on project info from json

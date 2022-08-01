@@ -1,6 +1,6 @@
 import React from "react";
+
 import {
-  useTheme,
   Paper,
   Card,
   CardMedia,
@@ -9,6 +9,7 @@ import {
   Box,
   Typography,
 } from "@mui/material";
+
 import Store from "../Store.json";
 import ProfilePicture from "../assets/imgs/profile.png";
 
@@ -19,14 +20,11 @@ export type AboutMeInfo = {
 };
 
 export default function AboutMe() {
-  const theme = useTheme();
-
   return (
-    <Paper elevation={0}>
+    <Paper elevation={0} variant="outlined">
       <Card
         sx={{
           width: "100%",
-          border: `1px solid ${theme.palette.divider}`,
           display: "flex",
           flexDirection: {
             xs: "column",

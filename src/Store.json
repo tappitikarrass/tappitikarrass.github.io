@@ -6,11 +6,7 @@
       "repoName": "tappitikarrass.github.io",
       "url": "https://github.com/tappitikarrass/tappitikarrass.github.io",
       "type": 0,
-      "tags": [
-        "ts",
-        "react",
-        "mui-v5"
-      ]
+      "tags": ["ts", "react", "mui-v5"]
     },
     {
       "id": 2,
@@ -18,11 +14,7 @@
       "repoName": "telegram-queue-bot",
       "url": "https://github.com/tappitikarrass/telegram-queue-bot",
       "type": 0,
-      "tags": [
-        "c#",
-        "telegram-bot",
-        "redis"
-      ]
+      "tags": ["c#", "telegram-bot", "redis"]
     },
     {
       "id": 3,
@@ -30,12 +22,7 @@
       "repoName": "flask-ani",
       "url": "https://github.com/tappitikarrass/flask-ani",
       "type": 0,
-      "tags": [
-        "python",
-        "flask",
-        "postgres",
-        "react"
-      ]
+      "tags": ["python", "flask", "postgres", "react"]
     },
     {
       "id": 4,
@@ -43,17 +30,54 @@
       "repoName": "deploy-arch",
       "url": "https://github.com/tappitikarrass/deploy-arch",
       "type": 0,
-      "tags": [
-        "bash",
-        "archlinux",
-        "wsl",
-        "docker"
-      ]
+      "tags": ["bash", "archlinux", "wsl", "docker"]
     }
   ],
   "aboutMe": {
     "name": "Andrii Lytvyn",
     "email": "lytvyn.andrii.contact@gmail.com",
     "text": "I'm CS/AI student at Lviv Polytechnic National University. I like to learn and work with new exciting technologies. Currently I'm learning .NET, ASP.NET Core, TypeScript and React."
-  }
+  },
+  "technologies": [
+    {
+      "id": 1,
+      "name": "Typescript",
+      "img": "typescript"
+    },
+    {
+      "id": 2,
+      "name": ".NET",
+      "img": "dotnet"
+    },
+    {
+      "id": 3,
+      "name": "C#",
+      "img": "csharp"
+    },
+    {
+      "id": 4,
+      "name": "React",
+      "img": "react"
+    },
+    {
+      "id": 5,
+      "name": "Redis",
+      "img": "redis"
+    },
+    {
+      "id": 6,
+      "name": "PostgreSQL",
+      "img": "postgres"
+    },
+    {
+      "id": 7,
+      "name": "Docker",
+      "img": "docker"
+    },
+    {
+      "id": 8,
+      "name": "Git",
+      "img": "git"
+    }
+  ]
 }
