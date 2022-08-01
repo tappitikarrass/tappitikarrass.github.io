@@ -8,11 +8,12 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "predeploy": "pnpm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
-      "react-app"
+      "eslint:recommended",
+      "plugin:react/recommended"
     ]
   },
   "dependencies": {

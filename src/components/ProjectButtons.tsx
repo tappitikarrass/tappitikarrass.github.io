@@ -1,6 +1,8 @@
 import React from "react";
+
 import { Grid, Chip } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+
 import { Project } from "../Models";
 
 type ProjectButtonsProps = {

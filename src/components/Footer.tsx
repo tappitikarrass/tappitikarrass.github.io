@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Paper, Typography, useTheme } from "@mui/material";
 
 export default function Footer() {
@@ -7,22 +8,18 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      style={{
-        textAlign: "center",
-        marginTop: "auto",
-        borderTop: `1px solid ${theme.palette.divider}`,
-      }}
-    >
-      <Paper square>
-        <Typography
-          variant="subtitle2"
-          color="text.secondary"
-          component="div"
-          sx={{
-            py: "1.5em",
-          }}
-        >
+    <footer>
+      <Paper
+        sx={{
+          py: "1.5em",
+          marginTop: "auto",
+          textAlign: "center",
+          borderTop: `1px solid ${theme.palette.divider}`,
+          bgcolor: `${theme.palette.background}`,
+        }}
+        square
+      >
+        <Typography color="text.secondary" variant="subtitle2" component="div">
           Copyright (C) {year} Andrii Lytvyn
         </Typography>
       </Paper>

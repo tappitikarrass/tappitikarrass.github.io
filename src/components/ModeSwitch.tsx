@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+
 import { IconButton, useTheme } from "@mui/material";
-import { ColorModeContext } from "./Layout";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+
+import { ColorModeContext } from "./Layout";
 
 export default function ModeSwitch() {
   const colorMode = React.useContext(ColorModeContext);
